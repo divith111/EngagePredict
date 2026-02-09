@@ -2,7 +2,7 @@
 
 **Social Media Engagement Prediction System**
 
-A full-stack web application that predicts social media post engagement using ML-powered analysis. Built for the CSE Major Project.
+A full-stack web application that predicts social media post engagement using ML-powered analysis.
 
 ![Luxury Tech Design](https://img.shields.io/badge/Design-Luxury%20Tech-gold)
 ![React](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-blue)
