@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold-primary: #D4AF37;
+  --gold-secondary: #B8962E;
+  --gold-light: #F5CF4F;
+  --luxury-white: #FFFFFF;
+  --luxury-light: #F8F9FA;
+  --luxury-gray: #E5E7EB;
+  --luxury-dark: #1F2937;
+  --luxury-black: #111827;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--luxury-white);
+  color: var(--luxury-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Luxury Glass Card Effect */
+@layer components {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  .gold-text {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8962E 50%, #D4AF37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gold-button {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+    color: white;
+    font-weight: 600;
+    padding: 12px 32px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
+  }
+
+  .gold-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+  }
+
+  .gold-button:active {
+    transform: translateY(0);
+  }
+
+  .luxury-input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid var(--luxury-gray);
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    background: var(--luxury-white);
+  }
+
+  .luxury-input:focus {
+    outline: none;
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+  }
+
+  .luxury-input::placeholder {
+    color: #9CA3AF;
+  }
+
+  .luxury-select {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid var(--luxury-gray);
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    background: var(--luxury-white);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 20px;
+  }
+
+  .luxury-select:focus {
+    outline: none;
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+  }
+
+  .upload-zone {
+    border: 2px dashed var(--luxury-gray);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: var(--luxury-light);
+  }
+
+  .upload-zone:hover {
+    border-color: var(--gold-primary);
+    background: rgba(212, 175, 55, 0.05);
+  }
+
+  .upload-zone.dragover {
+    border-color: var(--gold-primary);
+    background: rgba(212, 175, 55, 0.1);
+    transform: scale(1.02);
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--luxury-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--luxury-gray);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+
+/* Animation Classes */
+.animate-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive Utilities */
+@media (max-width: 768px) {
+  .glass-card {
+    border-radius: 16px;
+  }
+
+  .luxury-input,
+  .luxury-select {
+    padding: 14px 16px;
+    font-size: 16px;
+    /* Prevents zoom on iOS */
+  }
+}

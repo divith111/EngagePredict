@@ -1,16 +1,20 @@
-import express from "express";
-import cors from "cors";
-import mongoose from "mongoose";
-import predictionRoutes from "./routes/predictionRoutes.js";
+import app from './app.js';
+import { initializeFirebase } from './config/firebase.js';
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+const PORT = process.env.PORT || 5000;
 
-app.use("/api/predict", predictionRoutes);
+// Initialize Firebase Admin SDK
+initializeFirebase();
 
-mongoose.connect(process.env.MONGO_URI);
-
-app.listen(5000, () => {
-  console.log("Backend running on port 5000");
+// Start server
+app.listen(PORT, () => {
+  console.log(`
+╔════════════════════════════════════════╗
+║     EngagePredict Backend Server       ║
+╠════════════════════════════════════════╣
+║  Status: Running                       ║
+║  Port: ${PORT}                            ║
+║  Environment: ${process.env.NODE_ENV || 'development'}              ║
+╚════════════════════════════════════════╝
+  `);
 });
