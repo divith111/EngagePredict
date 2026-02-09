@@ -92,51 +92,47 @@ export default function Signup() {
                         {/* Form */}
                         <form onSubmit={handleSubmit} className="space-y-5">
                             <div>
-                                <label className="block text-sm font-medium text-luxury-dark mb-2">
+                                <label className="flex items-center gap-2 text-sm font-medium text-luxury-dark mb-2">
+                                    <User className="w-4 h-4 text-gold-500" />
                                     Full Name
                                 </label>
-                                <div className="relative">
-                                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                                    <input
-                                        type="text"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                        placeholder="John Doe"
-                                        className="luxury-input pl-12"
-                                        required
-                                    />
-                                </div>
+                                <input
+                                    type="text"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    placeholder="John Doe"
+                                    className="luxury-input"
+                                    required
+                                />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-luxury-dark mb-2">
+                                <label className="flex items-center gap-2 text-sm font-medium text-luxury-dark mb-2">
+                                    <Mail className="w-4 h-4 text-gold-500" />
                                     Email
                                 </label>
-                                <div className="relative">
-                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                                    <input
-                                        type="email"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        placeholder="you@example.com"
-                                        className="luxury-input pl-12"
-                                        required
-                                    />
-                                </div>
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="you@example.com"
+                                    className="luxury-input"
+                                    required
+                                />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-luxury-dark mb-2">
+                                <label className="flex items-center gap-2 text-sm font-medium text-luxury-dark mb-2">
+                                    <Lock className="w-4 h-4 text-gold-500" />
                                     Password
                                 </label>
                                 <div className="relative">
-                                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                                     <input
                                         type={showPassword ? 'text' : 'password'}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                         placeholder="••••••••"
-                                        className="luxury-input pl-12 pr-12"
+                                        className="luxury-input pr-12"
                                         required
                                     />
                                     <button
@@ -167,20 +163,18 @@ export default function Signup() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-luxury-dark mb-2">
+                                <label className="flex items-center gap-2 text-sm font-medium text-luxury-dark mb-2">
+                                    <Lock className="w-4 h-4 text-gold-500" />
                                     Confirm Password
                                 </label>
-                                <div className="relative">
-                                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                                    <input
-                                        type={showPassword ? 'text' : 'password'}
-                                        value={confirmPassword}
-                                        onChange={(e) => setConfirmPassword(e.target.value)}
-                                        placeholder="••••••••"
-                                        className="luxury-input pl-12"
-                                        required
-                                    />
-                                </div>
+                                <input
+                                    type={showPassword ? 'text' : 'password'}
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    placeholder="••••••••"
+                                    className="luxury-input"
+                                    required
+                                />
                             </div>
 
                             <button

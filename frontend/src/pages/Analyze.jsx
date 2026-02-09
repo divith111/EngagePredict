@@ -15,7 +15,12 @@ import {
     Sparkles,
     AlertCircle,
     Monitor,
-    Smartphone
+    Smartphone,
+    Instagram,
+    Youtube,
+    Twitter,
+    Facebook,
+    Music2
 } from 'lucide-react';
 
 export default function Analyze() {
@@ -41,11 +46,11 @@ export default function Analyze() {
     const [error, setError] = useState('');
 
     const platforms = [
-        { value: 'instagram', label: 'Instagram', icon: '📸' },
-        { value: 'tiktok', label: 'TikTok', icon: '🎵' },
-        { value: 'youtube', label: 'YouTube', icon: '▶️' },
-        { value: 'twitter', label: 'X (Twitter)', icon: '𝕏' },
-        { value: 'facebook', label: 'Facebook', icon: '📘' },
+        { value: 'instagram', label: 'Instagram', icon: Instagram, color: '#E4405F' },
+        { value: 'tiktok', label: 'TikTok', icon: Music2, color: '#000000' },
+        { value: 'youtube', label: 'YouTube', icon: Youtube, color: '#FF0000' },
+        { value: 'twitter', label: 'X (Twitter)', icon: Twitter, color: '#1DA1F2' },
+        { value: 'facebook', label: 'Facebook', icon: Facebook, color: '#1877F2' },
     ];
 
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -260,17 +265,17 @@ export default function Analyze() {
                         ) : (
                             <div className="space-y-4">
                                 {/* Preview */}
-                                <div className="relative rounded-2xl overflow-hidden bg-luxury-dark">
+                                <div className="relative rounded-2xl overflow-hidden bg-luxury-dark flex justify-center">
                                     {mediaInfo?.type === 'image' ? (
                                         <img
                                             src={preview}
                                             alt="Preview"
-                                            className="w-full max-h-80 object-contain"
+                                            className="max-w-xs max-h-48 object-contain"
                                         />
                                     ) : (
                                         <video
                                             src={preview}
-                                            className="w-full max-h-80 object-contain"
+                                            className="max-w-xs max-h-48 object-contain"
                                             controls
                                         />
                                     )}
@@ -313,11 +318,11 @@ export default function Analyze() {
                                             <p className="font-semibold text-luxury-dark">{mediaInfo.aspectRatio}</p>
                                         </div>
                                         <div className={`rounded-xl p-4 text-center ${mediaInfo.qualityScore === 'High' ? 'bg-green-50' :
-                                                mediaInfo.qualityScore === 'Medium' ? 'bg-yellow-50' : 'bg-red-50'
+                                            mediaInfo.qualityScore === 'Medium' ? 'bg-yellow-50' : 'bg-red-50'
                                             }`}>
                                             <p className="text-xs text-gray-500 mb-1">Quality</p>
                                             <p className={`font-semibold ${mediaInfo.qualityScore === 'High' ? 'text-green-600' :
-                                                    mediaInfo.qualityScore === 'Medium' ? 'text-yellow-600' : 'text-red-600'
+                                                mediaInfo.qualityScore === 'Medium' ? 'text-yellow-600' : 'text-red-600'
                                                 }`}>
                                                 {mediaInfo.qualityScore}
                                             </p>
@@ -381,19 +386,32 @@ export default function Analyze() {
                                 <label className="block text-sm font-medium text-luxury-dark mb-2">
                                     Platform
                                 </label>
-                                <select
-                                    value={formData.platform}
-                                    onChange={(e) => setFormData(prev => ({ ...prev, platform: e.target.value }))}
-                                    className="luxury-select"
-                                    required
-                                >
-                                    <option value="">Select platform</option>
-                                    {platforms.map(p => (
-                                        <option key={p.value} value={p.value}>
-                                            {p.icon} {p.label}
-                                        </option>
-                                    ))}
-                                </select>
+                                <div className="grid grid-cols-5 gap-2">
+                                    {platforms.map(p => {
+                                        const IconComponent = p.icon;
+                                        const isSelected = formData.platform === p.value;
+                                        return (
+                                            <button
+                                                key={p.value}
+                                                type="button"
+                                                onClick={() => setFormData(prev => ({ ...prev, platform: p.value }))}
+                                                className={`flex flex-col items-center gap-1 p-3 rounded-xl border-2 transition-all ${isSelected
+                                                        ? 'border-gold-500 bg-gold-50'
+                                                        : 'border-gray-200 hover:border-gray-300 bg-white'
+                                                    }`}
+                                                title={p.label}
+                                            >
+                                                <IconComponent
+                                                    className="w-6 h-6"
+                                                    style={{ color: isSelected ? p.color : '#6B7280' }}
+                                                />
+                                                <span className={`text-xs font-medium ${isSelected ? 'text-luxury-dark' : 'text-gray-500'}`}>
+                                                    {p.label.split(' ')[0]}
+                                                </span>
+                                            </button>
+                                        );
+                                    })}
+                                </div>
                             </div>
 
                             {/* Posting Time */}

@@ -199,10 +199,10 @@ export default function ResultDashboard() {
         return (
             <div className="min-h-screen bg-luxury-light flex items-center justify-center">
                 <div className="text-center">
-                    <div className="relative w-24 h-24 mx-auto mb-6">
+                    <div className="relative w-24 h-24 mx-auto mb-8">
                         <div className="absolute inset-0 border-4 border-gold-200 rounded-full"></div>
                         <div className="absolute inset-0 border-4 border-gold-500 rounded-full border-t-transparent animate-spin"></div>
-                        <Sparkles className="absolute inset-0 m-auto w-10 h-10 text-gold-500" />
+                        <Sparkles className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-gold-500" />
                     </div>
                     <h2 className="text-xl font-semibold text-luxury-dark mb-2">
                         Analyzing Your Content
@@ -280,8 +280,7 @@ export default function ResultDashboard() {
                                 </defs>
                             </svg>
                             <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                <span className="text-5xl font-bold gold-text">{results.score}</span>
-                                <span className="text-sm text-gray-500 mt-1">out of 100</span>
+                                <Sparkles className="w-12 h-12 text-gold-500" />
                             </div>
                         </div>
 
@@ -297,10 +296,17 @@ export default function ResultDashboard() {
                                     {results.engagementLevel} Engagement Potential
                                 </span>
                             </div>
+
+                            {/* Score display */}
+                            <div className="mb-4">
+                                <span className="text-5xl font-bold gold-text">{results.score}</span>
+                                <span className="text-lg text-gray-500 ml-2">/ 100</span>
+                            </div>
+
                             <h2 className="text-2xl md:text-3xl font-bold text-luxury-black mb-4">
-                                {results.score >= 80 ? 'Excellent Work! 🚀' :
-                                    results.score >= 60 ? 'Good Start! 💪' :
-                                        'Room for Improvement 📈'}
+                                {results.score >= 80 ? 'Excellent Work!' :
+                                    results.score >= 60 ? 'Good Start!' :
+                                        'Room for Improvement'}
                             </h2>
                             <p className="text-gray-600 mb-6 max-w-lg">
                                 {results.score >= 80
@@ -350,12 +356,12 @@ export default function ResultDashboard() {
                             {results.feedback.map((item, index) => (
                                 <div
                                     key={index}
-                                    className={`flex items-start gap-3 p-4 rounded-xl ${item.type === 'success' ? 'bg-green-50' :
-                                            item.type === 'warning' ? 'bg-yellow-50' : 'bg-red-50'
+                                    className={`flex items-center gap-3 p-4 rounded-xl ${item.type === 'success' ? 'bg-green-50' :
+                                        item.type === 'warning' ? 'bg-yellow-50' : 'bg-red-50'
                                         }`}
                                 >
                                     <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${item.type === 'success' ? 'bg-green-500' :
-                                            item.type === 'warning' ? 'bg-yellow-500' : 'bg-red-500'
+                                        item.type === 'warning' ? 'bg-yellow-500' : 'bg-red-500'
                                         }`}>
                                         {item.type === 'success' ? (
                                             <Check className="w-4 h-4 text-white" />
@@ -365,14 +371,12 @@ export default function ResultDashboard() {
                                             <X className="w-4 h-4 text-white" />
                                         )}
                                     </div>
-                                    <div className="flex-1">
-                                        <p className={`text-sm font-medium ${item.type === 'success' ? 'text-green-800' :
-                                                item.type === 'warning' ? 'text-yellow-800' : 'text-red-800'
-                                            }`}>
-                                            {item.text}
-                                        </p>
-                                    </div>
-                                    <span className={`text-xs font-semibold ${item.impact.startsWith('+') ? 'text-green-600' : 'text-red-600'
+                                    <p className={`flex-1 text-sm font-medium ${item.type === 'success' ? 'text-green-800' :
+                                        item.type === 'warning' ? 'text-yellow-800' : 'text-red-800'
+                                        }`}>
+                                        {item.text}
+                                    </p>
+                                    <span className={`text-xs font-semibold flex-shrink-0 ${item.impact.startsWith('+') ? 'text-green-600' : 'text-red-600'
                                         }`}>
                                         {item.impact}
                                     </span>
@@ -388,9 +392,7 @@ export default function ResultDashboard() {
                                 <Lightbulb className="w-5 h-5 text-gold-600" />
                             </div>
                             <div>
-                                <h3 className="text-lg font-semibold text-luxury-black">
-                                    {results.score >= 80 ? 'Booming Tips 🔥' : 'Pro Tips'}
-                                </h3>
+                                <h3 className="text-lg font-semibold text-luxury-black">Pro Tips</h3>
                                 <p className="text-sm text-gray-500">Expert recommendations for maximum reach</p>
                             </div>
                         </div>
@@ -399,9 +401,9 @@ export default function ResultDashboard() {
                             {results.tips.map((tip, index) => (
                                 <div
                                     key={index}
-                                    className="flex items-start gap-3 p-4 bg-gold-50 rounded-xl"
+                                    className="flex items-center gap-3 p-4 bg-gold-50 rounded-xl"
                                 >
-                                    <Sparkles className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
+                                    <Sparkles className="w-5 h-5 text-gold-500 flex-shrink-0" />
                                     <p className="text-sm text-gold-800">{tip}</p>
                                 </div>
                             ))}
