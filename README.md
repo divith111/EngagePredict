@@ -164,7 +164,7 @@ GPL-3.0 License - See [LICENSE](LICENSE) for details.
 
 ## 👨‍💻 Author
 
-**Divith** - CSE Major Project 2026
+**Divith**
 
 ---
 
