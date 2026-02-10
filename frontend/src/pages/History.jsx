@@ -131,26 +131,8 @@ export default function History() {
     }
 
     return (
-        <div className="min-h-screen bg-luxury-light py-8 px-4">
+        <div className="bg-luxury-light pb-8 px-4">
             <div className="max-w-6xl mx-auto">
-                {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
-                    <div>
-                        <h1 className="text-3xl md:text-4xl font-bold text-luxury-black mb-2">
-                            Prediction History
-                        </h1>
-                        <p className="text-gray-600">
-                            Track your content improvement over time
-                        </p>
-                    </div>
-                    <button
-                        onClick={fetchPredictions}
-                        className="flex items-center gap-2 px-4 py-2 bg-white border border-luxury-gray rounded-full hover:border-gold-500 transition-colors"
-                    >
-                        <RefreshCw className="w-4 h-4" />
-                        Refresh
-                    </button>
-                </div>
 
                 {/* Stats Cards */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -210,8 +192,8 @@ export default function History() {
                                         key={f}
                                         onClick={() => setFilter(f)}
                                         className={`px-3 py-1.5 text-sm rounded-full transition-colors ${filter === f
-                                                ? 'bg-gold-500 text-white'
-                                                : 'bg-white border border-luxury-gray hover:border-gold-500'
+                                            ? 'bg-gold-500 text-white'
+                                            : 'bg-white border border-luxury-gray hover:border-gold-500'
                                             }`}
                                     >
                                         {f === 'all' ? 'All' :

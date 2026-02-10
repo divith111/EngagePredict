@@ -199,11 +199,7 @@ export default function ResultDashboard() {
         return (
             <div className="min-h-screen bg-luxury-light flex items-center justify-center">
                 <div className="text-center">
-                    <div className="relative w-24 h-24 mx-auto mb-8">
-                        <div className="absolute inset-0 border-4 border-gold-200 rounded-full"></div>
-                        <div className="absolute inset-0 border-4 border-gold-500 rounded-full border-t-transparent animate-spin"></div>
-                        <Sparkles className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-gold-500" />
-                    </div>
+                    <div className="w-10 h-10 border-4 border-gold-200 border-t-gold-500 rounded-full animate-spin mx-auto mb-6"></div>
                     <h2 className="text-xl font-semibold text-luxury-dark mb-2">
                         Analyzing Your Content
                     </h2>
@@ -279,19 +275,11 @@ export default function ResultDashboard() {
                                     </linearGradient>
                                 </defs>
                             </svg>
-                            <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                <Sparkles className="w-12 h-12 text-gold-500" />
-                            </div>
                         </div>
 
                         {/* Score Details */}
                         <div className="flex-1 text-center lg:text-left">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-50 mb-4">
-                                {results.score >= 70 ? (
-                                    <TrendingUp className="w-5 h-5 text-green-500" />
-                                ) : (
-                                    <TrendingDown className="w-5 h-5 text-yellow-500" />
-                                )}
+                            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gold-50 mb-4">
                                 <span className={`font-semibold ${getScoreColor(results.score)}`}>
                                     {results.engagementLevel} Engagement Potential
                                 </span>
@@ -342,41 +330,34 @@ export default function ResultDashboard() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                     {/* Actionable Feedback */}
                     <div className="glass-card p-6">
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="w-10 h-10 rounded-full bg-gold-100 flex items-center justify-center">
-                                <Check className="w-5 h-5 text-gold-600" />
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-semibold text-luxury-black">Analysis Feedback</h3>
-                                <p className="text-sm text-gray-500">What's working and what to improve</p>
-                            </div>
-                        </div>
+                        <h3 className="text-lg font-semibold text-luxury-black mb-1">Analysis Feedback</h3>
+                        <p className="text-sm text-gray-500 mb-5">What's working and what to improve</p>
 
                         <div className="space-y-3">
                             {results.feedback.map((item, index) => (
                                 <div
                                     key={index}
-                                    className={`flex items-center gap-3 p-4 rounded-xl ${item.type === 'success' ? 'bg-green-50' :
+                                    className={`flex items-center gap-3 px-4 py-3 rounded-xl ${item.type === 'success' ? 'bg-green-50' :
                                         item.type === 'warning' ? 'bg-yellow-50' : 'bg-red-50'
                                         }`}
                                 >
-                                    <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${item.type === 'success' ? 'bg-green-500' :
+                                    <div className={`w-6 h-6 min-w-[24px] rounded-full flex items-center justify-center ${item.type === 'success' ? 'bg-green-500' :
                                         item.type === 'warning' ? 'bg-yellow-500' : 'bg-red-500'
                                         }`}>
                                         {item.type === 'success' ? (
-                                            <Check className="w-4 h-4 text-white" />
+                                            <Check className="w-3.5 h-3.5 text-white" />
                                         ) : item.type === 'warning' ? (
-                                            <AlertTriangle className="w-4 h-4 text-white" />
+                                            <AlertTriangle className="w-3.5 h-3.5 text-white" />
                                         ) : (
-                                            <X className="w-4 h-4 text-white" />
+                                            <X className="w-3.5 h-3.5 text-white" />
                                         )}
                                     </div>
-                                    <p className={`flex-1 text-sm font-medium ${item.type === 'success' ? 'text-green-800' :
+                                    <span className={`flex-1 text-sm font-medium leading-snug ${item.type === 'success' ? 'text-green-800' :
                                         item.type === 'warning' ? 'text-yellow-800' : 'text-red-800'
                                         }`}>
                                         {item.text}
-                                    </p>
-                                    <span className={`text-xs font-semibold flex-shrink-0 ${item.impact.startsWith('+') ? 'text-green-600' : 'text-red-600'
+                                    </span>
+                                    <span className={`text-xs font-semibold ml-2 whitespace-nowrap ${item.impact.startsWith('+') ? 'text-green-600' : 'text-red-600'
                                         }`}>
                                         {item.impact}
                                     </span>

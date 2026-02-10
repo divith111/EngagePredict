@@ -26,7 +26,7 @@ export default function MainLayout() {
     return (
         <div className="min-h-screen bg-luxury-light">
             {/* Header */}
-            <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-luxury-gray/50">
+            <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-luxury-gray/50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16 md:h-20">
                         {/* Logo */}
@@ -47,8 +47,8 @@ export default function MainLayout() {
                                         key={item.name}
                                         to={item.href}
                                         className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${isActive(item.href)
-                                                ? 'bg-gold-500 text-white shadow-luxury-gold'
-                                                : 'text-luxury-dark hover:bg-luxury-light'
+                                            ? 'bg-gold-500 text-white shadow-luxury-gold'
+                                            : 'text-luxury-dark hover:bg-luxury-light'
                                             }`}
                                     >
                                         <Icon className="w-4 h-4" />
@@ -101,8 +101,8 @@ export default function MainLayout() {
                                         to={item.href}
                                         onClick={() => setMobileMenuOpen(false)}
                                         className={`flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all ${isActive(item.href)
-                                                ? 'bg-gold-500 text-white'
-                                                : 'text-luxury-dark hover:bg-luxury-light'
+                                            ? 'bg-gold-500 text-white'
+                                            : 'text-luxury-dark hover:bg-luxury-light'
                                             }`}
                                     >
                                         <Icon className="w-5 h-5" />
@@ -132,7 +132,7 @@ export default function MainLayout() {
             </header>
 
             {/* Main Content */}
-            <main className="pt-16 md:pt-20 min-h-screen">
+            <main className="pt-20 md:pt-24 min-h-screen">
                 <Outlet />
             </main>
         </div>
