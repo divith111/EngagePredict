@@ -171,11 +171,14 @@ export default function ResultDashboard() {
     };
 
     const savePrediction = async (data, prediction) => {
-        if (!user) return;
+        if (!user) {
+            console.warn('Cannot save prediction: user not logged in');
+            return;
+        }
 
         setSaving(true);
         try {
-            await addDoc(collection(db, 'predictions'), {
+            const docRef = await addDoc(collection(db, 'predictions'), {
                 userId: user.uid,
                 platform: data.platform,
                 caption: data.caption,
@@ -188,8 +191,9 @@ export default function ResultDashboard() {
                 feedback: prediction.feedback,
                 createdAt: serverTimestamp()
             });
+            console.log('Prediction saved to history with ID:', docRef.id);
         } catch (error) {
-            console.error('Error saving prediction:', error);
+            console.error('Error saving prediction:', error.code, error.message);
         } finally {
             setSaving(false);
         }
@@ -203,9 +207,6 @@ export default function ResultDashboard() {
                     <h2 className="text-xl font-semibold text-luxury-dark mb-2">
                         Analyzing Your Content
                     </h2>
-                    <p className="text-gray-500">
-                        Our AI is predicting engagement potential...
-                    </p>
                 </div>
             </div>
         );
@@ -235,9 +236,6 @@ export default function ResultDashboard() {
                     <h1 className="text-3xl md:text-4xl font-bold text-luxury-black mb-3">
                         Engagement Prediction
                     </h1>
-                    <p className="text-gray-600">
-                        AI-powered analysis of your content's viral potential
-                    </p>
                 </div>
 
                 {/* Main Score Card */}

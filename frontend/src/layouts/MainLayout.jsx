@@ -91,43 +91,50 @@ export default function MainLayout() {
 
                 {/* Mobile Menu */}
                 {mobileMenuOpen && (
-                    <div className="md:hidden bg-white border-t border-luxury-gray/50 animate-in">
-                        <div className="px-4 py-4 space-y-2">
-                            {navigation.map((item) => {
-                                const Icon = item.icon;
-                                return (
-                                    <Link
-                                        key={item.name}
-                                        to={item.href}
-                                        onClick={() => setMobileMenuOpen(false)}
-                                        className={`flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all ${isActive(item.href)
-                                            ? 'bg-gold-500 text-white'
-                                            : 'text-luxury-dark hover:bg-luxury-light'
-                                            }`}
+                    <>
+                        {/* Backdrop overlay to prevent content clash */}
+                        <div
+                            className="fixed inset-0 top-16 bg-black/20 z-40 md:hidden"
+                            onClick={() => setMobileMenuOpen(false)}
+                        />
+                        <div className="md:hidden bg-white border-t border-luxury-gray/50 shadow-xl relative z-50 animate-in">
+                            <div className="px-4 py-4 space-y-2">
+                                {navigation.map((item) => {
+                                    const Icon = item.icon;
+                                    return (
+                                        <Link
+                                            key={item.name}
+                                            to={item.href}
+                                            onClick={() => setMobileMenuOpen(false)}
+                                            className={`flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all ${isActive(item.href)
+                                                ? 'bg-gold-500 text-white'
+                                                : 'text-luxury-dark hover:bg-luxury-light'
+                                                }`}
+                                        >
+                                            <Icon className="w-5 h-5" />
+                                            {item.name}
+                                        </Link>
+                                    );
+                                })}
+                                <hr className="border-luxury-gray/50 my-2" />
+                                <div className="flex items-center justify-between px-4 py-2">
+                                    <div>
+                                        <p className="font-medium text-luxury-dark">
+                                            {user?.displayName || 'User'}
+                                        </p>
+                                        <p className="text-sm text-gray-500">{user?.email}</p>
+                                    </div>
+                                    <button
+                                        onClick={handleLogout}
+                                        className="flex items-center gap-2 px-4 py-2 rounded-xl text-red-500 hover:bg-red-50 transition-colors"
                                     >
-                                        <Icon className="w-5 h-5" />
-                                        {item.name}
-                                    </Link>
-                                );
-                            })}
-                            <hr className="border-luxury-gray/50 my-2" />
-                            <div className="flex items-center justify-between px-4 py-2">
-                                <div>
-                                    <p className="font-medium text-luxury-dark">
-                                        {user?.displayName || 'User'}
-                                    </p>
-                                    <p className="text-sm text-gray-500">{user?.email}</p>
+                                        <LogOut className="w-5 h-5" />
+                                        Logout
+                                    </button>
                                 </div>
-                                <button
-                                    onClick={handleLogout}
-                                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-red-500 hover:bg-red-50 transition-colors"
-                                >
-                                    <LogOut className="w-5 h-5" />
-                                    Logout
-                                </button>
                             </div>
                         </div>
-                    </div>
+                    </>
                 )}
             </header>
 

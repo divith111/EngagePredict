@@ -265,26 +265,26 @@ export default function Analyze() {
                         ) : (
                             <div className="space-y-4">
                                 {/* Preview */}
-                                <div className="relative rounded-2xl overflow-hidden bg-luxury-dark flex justify-center">
+                                <div className="relative rounded-xl overflow-hidden bg-luxury-dark flex items-center justify-center" style={{ maxHeight: '150px' }}>
                                     {mediaInfo?.type === 'image' ? (
                                         <img
                                             src={preview}
                                             alt="Preview"
-                                            className="max-w-xs max-h-48 object-contain"
+                                            style={{ maxHeight: '150px', maxWidth: '200px', objectFit: 'contain' }}
                                         />
                                     ) : (
                                         <video
                                             src={preview}
-                                            className="max-w-xs max-h-48 object-contain"
+                                            style={{ maxHeight: '150px', maxWidth: '200px', objectFit: 'contain' }}
                                             controls
                                         />
                                     )}
                                     <button
                                         type="button"
                                         onClick={removeFile}
-                                        className="absolute top-3 right-3 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors"
+                                        className="absolute top-2 right-2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors"
                                     >
-                                        <X className="w-5 h-5" />
+                                        <X className="w-4 h-4" />
                                     </button>
                                 </div>
 
@@ -396,8 +396,8 @@ export default function Analyze() {
                                                 type="button"
                                                 onClick={() => setFormData(prev => ({ ...prev, platform: p.value }))}
                                                 className={`flex flex-col items-center gap-1 p-3 rounded-xl border-2 transition-all ${isSelected
-                                                        ? 'border-gold-500 bg-gold-50'
-                                                        : 'border-gray-200 hover:border-gray-300 bg-white'
+                                                    ? 'border-gold-500 bg-gold-50'
+                                                    : 'border-gray-200 hover:border-gray-300 bg-white'
                                                     }`}
                                                 title={p.label}
                                             >

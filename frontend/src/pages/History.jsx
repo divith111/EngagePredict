@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../config/firebase';
-import { collection, query, where, orderBy, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { collection, query, where, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import {
     History as HistoryIcon,
@@ -36,8 +36,7 @@ export default function History() {
         try {
             const q = query(
                 collection(db, 'predictions'),
-                where('userId', '==', user.uid),
-                orderBy('createdAt', 'desc')
+                where('userId', '==', user.uid)
             );
 
             const snapshot = await getDocs(q);
@@ -46,6 +45,9 @@ export default function History() {
                 ...doc.data(),
                 createdAt: doc.data().createdAt?.toDate?.() || new Date()
             }));
+
+            // Sort client-side (newest first) to avoid needing a Firestore composite index
+            data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
             setPredictions(data);
         } catch (error) {
