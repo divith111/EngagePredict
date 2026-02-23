@@ -165,7 +165,3 @@ GPL-3.0 License - See [LICENSE](LICENSE) for details.
 ## 👨‍💻 Author
 
 **Divith**
-
----
-
-Made with ❤️ for creators who treat content like a system — not luck.
