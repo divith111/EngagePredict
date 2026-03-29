@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import app from './app.js';
 import { initializeFirebase } from './config/firebase.js';
 
