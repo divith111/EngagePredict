@@ -12,7 +12,7 @@ A full-stack web application that predicts social media post engagement using ML
 
 ## ✨ Features
 
-- **🎯 Engagement Prediction** - ML-powered score prediction (Low/Medium/High)
+- **🎯 Engagement Prediction** - Ensemble ML scoring (Random Forest, Logistic Regression, KNN) predicting Low/Medium/High engagement tiers based on 14 predictive factors
 - **📹 Media Analysis** - Automatic resolution, orientation & aspect ratio detection
 - **💡 Actionable Feedback** - Platform-specific recommendations to boost reach
 - **📊 History Tracking** - Track your content improvements over time
@@ -25,7 +25,7 @@ A full-stack web application that predicts social media post engagement using ML
 |-------|------------|
 | Frontend | React 18, Vite, Tailwind CSS, Framer Motion |
 | Backend | Node.js, Express, Firebase Admin SDK |
-| ML Service | Python, FastAPI, scikit-learn |
+| ML Service | Python, FastAPI, scikit-learn (Ensemble: Random Forest, Logistic Regression, KNN) |
 | Database | Firebase Firestore |
 | Auth | Firebase Authentication |
 | Storage | Firebase Storage |
