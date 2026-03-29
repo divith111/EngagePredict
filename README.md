@@ -102,6 +102,7 @@ EngagePredict/
 │   ├── media_analyzer.py     # Media quality analysis
 │   └── recommendation_engine.py  # Tips generator
 │
+├── ML_IMPLEMENTATION.md      # Detailed breakdown of ML models
 └── .env.example              # Environment template
 ```
 
